@@ -1,4 +1,4 @@
-# Images CMS Grav
+# Image CMS Grav
 
 Ce repo est un clone du dépôt officiel réalisé pour une instance docker déployé sur un NAS Synology.
 Elle est en cours de test à ce jour.
