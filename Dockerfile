@@ -53,7 +53,7 @@ ARG GUID=1000
 RUN chown www-data:www-data /var/www
 RUN useradd -u $UID xavier
 RUN usermod -a -G xavier www-data
-USER xavier
+USER www-data
 
 # Define Grav specific version of Grav or use latest stable
 ENV GRAV_VERSION latest
@@ -70,6 +70,7 @@ RUN (crontab -l; echo "* * * * * cd /var/www/html;/usr/local/bin/php bin/grav sc
 
 # Return to root user
 USER root
+RUN chown xavier:www-data -R /var/www
 
 # Copy init scripts
 # COPY docker-entrypoint.sh /entrypoint.sh
