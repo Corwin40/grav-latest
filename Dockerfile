@@ -53,7 +53,7 @@ ARG GUID=1000
 RUN chown www-data:www-data /var/www
 RUN useradd -u $UID xavier
 RUN usermod -a -G xavier www-data
-USER www-data
+USER xavier
 
 # Define Grav specific version of Grav or use latest stable
 ENV GRAV_VERSION latest
