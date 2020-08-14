@@ -51,8 +51,8 @@ RUN pecl install apcu \
 ARG UID=1000
 ARG GUID=1000
 RUN chown www-data:www-data /var/www
-RUN useradd -u $UID newuser
-RUN usermod -a -G newuser www-data
+RUN useradd -u $UID xavier
+RUN usermod -a -G xavier www-data
 USER www-data
 
 # Define Grav specific version of Grav or use latest stable
