@@ -51,7 +51,7 @@ RUN pecl install apcu \
 ARG UID=1000
 ARG GUID=1000
 RUN chown www-data:www-data /var/www
-RUN useradd -u $UID xavier
+RUN useradd -u $UID newuser
 RUN usermod -a -G newuser www-data
 USER www-data
 
