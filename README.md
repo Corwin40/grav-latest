@@ -1,7 +1,14 @@
 # Image CMS Grav
 
 Ce repo est un clone du dépôt officiel réalisé pour une instance docker déployé sur un NAS Synology.
-Elle est en cours de test à ce jour.
+
+Pour l'installer sur un NAS synology (testé sur un RS820), Vous devez préalablement avoir installé le service docker à partir du centre de paquets.
+
+### Création du répertoire de persistance  
+Par defaut, une fois lancé, l'image **docker** lance une installation propre de GRAV. Mais vous ne pourrez pas accéder directement aux dossiers hébergeant la structure **GRAV**.  
+Pour cela il vous est possible de créer dans votre NAS, un répertoire sur lequel le volume de perssitance docker va se brancher. Vous pouvez même y charger la structure complête de votre futur site GRAV.  
+>> ATTENTION : Vous devez attribué les droits en écriture à l'ensemble des dossiers et fichiers pour que l'instance Docker puisse communiquer avec votre dossier, pour que vos modification puisse être prise en compte. 
+
 
 ### Notes depuis le repo officiel de https://getgrav - Image pour le CMS GRAV
 
@@ -17,22 +24,3 @@ This currently is pretty minimal and uses:
 * cron
 * vim editor
 
-#### Building the image from Dockerfile
-
-```
-docker build -t grav:latest .
-```
-
-#### Running Grav Image with Latest Grav + Admin:
-
-```
-docker run -p 8000:80 grav:latest
-```
-
-Point browser to `http://localhost:8000` and create user account...
-
-#### Running Grav Image with Latest Grav + Admin with a named volume (can be used in production)
-
-```
-docker run -d -p 8000:80 --restart always -v grav_data:/var/www/html grav:latest
-```
