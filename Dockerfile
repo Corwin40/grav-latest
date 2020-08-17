@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM php:7.4-apache
 LABEL maintainer="Andy Miller <rhuk@getgrav.org> (@rhukster)"
 
 # Enable Apache Rewrite + Expires Module
@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-install opcache \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install zip \
     && rm -rf /var/lib/apt/lists/*
@@ -48,8 +48,8 @@ RUN pecl install apcu \
     && docker-php-ext-enable apcu yaml
 
 # Set user to www-data
-RUN useradd -u 911 -U -d /var/www -s /bin/false xyz && \
-    usermod -G users xyz
+RUN chown www-data:www-data /var/www
+USER www-data
 
 # Define Grav specific version of Grav or use latest stable
 ENV GRAV_VERSION latest
@@ -66,7 +66,6 @@ RUN (crontab -l; echo "* * * * * cd /var/www/html;/usr/local/bin/php bin/grav sc
 
 # Return to root user
 USER root
-RUN chown xavier:www-data -R /var/www
 
 # Copy init scripts
 # COPY docker-entrypoint.sh /entrypoint.sh
