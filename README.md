@@ -7,7 +7,7 @@ Pour l'installer sur un NAS synology (testé sur un RS820), Vous devez préalabl
 ### Création du répertoire de persistance  
 Par defaut, une fois lancé, l'image **docker** lance une installation propre de GRAV. Mais vous ne pourrez pas accéder directement aux dossiers hébergeant la structure **GRAV**.  
 Pour cela il vous est possible de créer dans votre NAS, un répertoire sur lequel le volume de perssitance docker va se brancher. Vous pouvez même y charger la structure complête de votre futur site GRAV.  
->> ATTENTION : Vous devez attribué les droits en écriture à l'ensemble des dossiers et fichiers pour que l'instance Docker puisse communiquer avec votre dossier, pour que vos modification puisse être prise en compte. 
+> ATTENTION : Vous devez attribuer les droits en écriture à l'ensemble des dossiers et fichiers pour que l'instance Docker puisse communiquer avec votre dossier, pour que vos modification puisse être prise en compte. 
 
 
 ### Notes depuis le repo officiel de https://getgrav - Image pour le CMS GRAV
